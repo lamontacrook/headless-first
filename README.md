@@ -122,8 +122,6 @@ We will give it a title and name and select GraphQL Persisted Queires and Conten
 
 3. Let's test our new endpoint.  Navigate to Tools > GraphQL Query Editor and choose our endpoint for the top right drop down.
 
-![graphiql](./src/media/endpoint.png)
-
 4. In the query editor let's create a few different queries.  First (easiest).
 
 ```
