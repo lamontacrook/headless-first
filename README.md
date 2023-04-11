@@ -80,9 +80,117 @@ We will give it a title and name and select GraphQL Persisted Queires and Conten
 
 ![Image List Model](./src/media/imagelist-model.png)
 
-Select the folder and choose the properties navigation item.
+## Create Content
+
+1. Now navigate to Assets and let's create a folder for our new site. Click create and name your folder.
+
+![Add folder](./src/media/create-folder.png)
+
+2. After the folder is created, select the folder and choose the properties navigation item.
 
 ![Properties](./src/media/properties.png)
+
+3. In cloud configurations, change the configuration to our new configuration that we created at the beginning of this tutorial.
+
+![cloud config](./src/media/cloud-config.png)
+
+4. Under policies, select the new models to the "Allowed Content Fragment Models by Path" and click "Save & New".
+
+![policies](./src/media/policies.png)
+
+5. Let's now click into our new folder and create a teaser.  Click "Create" and "Content Fragment" and select the Teaser model.  Give the model a name and click "Create" and name it "Hero".
+
+| Name | Notes |
+|----------|------|
+| Asset | You may leave this as default value or choose a different asset (video or image). |
+| Title | Explore. Discover. Live. |
+| Pre-Title | Join use for your next adventure. |
+| Description | You may leave blank. |
+| Style | Choose Hero. |
+
+![hero fragment](./src/media/hero-fragment.png)
+
+## Create an endpoint
+
+1. Navigate to Tools > GraphQL.
+
+![graphql](./src/media/endpoint-nav.png)
+
+2. Click "Create" and give your new endpoint a name and choose the newly created configuration.
+
+![endpoint](./src/media/endpoint.png)
+
+3. Let's test our new endpoint.  Navigate to Tools > GraphQL Query Editor and choose our endpoint for the top right drop down.
+
+![graphiql](./src/media/endpoint.png)
+
+4. In the query editor let's create a few different queries.  First (easiest).
+
+```
+{
+  teaserList {
+    items {
+      title
+    }
+  }
+}
+```
+You should get a list of 1 fragment that you just created.
+
+For our exercise, let's create a full query that our app can use.
+
+```
+query TeaserByPath($path: String!) {
+  component: teaserByPath(_path: $path) {
+    item {
+      __typename
+      _path
+      _metadata {
+        stringMetadata {
+          name
+          value
+        }
+      }
+      title
+      preTitle
+      style
+      asset {
+        ... on MultimediaRef {
+          __typename
+          _authorUrl
+          format
+          _publishUrl
+        }
+        ... on ImageRef {
+          __typename
+          _authorUrl
+          _publishUrl
+          mimeType
+          width
+          height
+        }
+      }
+      description {
+        html
+        plaintext
+      }
+    }
+  }
+}
+```
+In the query variable box, enter:
+
+```
+{
+  "path": "/content/dam/pure-headless/hero"
+}
+```
+
+NOTE: You will need to adjust this based your folder and fragment names.
+
+Run the query and you should receive the results of the fragment just created.
+
+5. Now let's persist (save) the query and give it a name.
 
 
 
