@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import AEMHeadless from '@adobe/aem-headless-client-js';
 import { useErrorHandler } from 'react-error-boundary';
-import { AppContext } from '../../utils/Context';
+import { AppContext } from '../../utils/context';
 import Teaser from '../../components/teaser/teaser';
 
 import './home.css';
@@ -18,7 +18,7 @@ const Home = () => {
       auth: context.token
     });
 
-    sdk.runPersistedQuery('aem-demo-assets/gql-demo-teaser', { path: `/content/dam/${context.project}/site/en/home/components/hero` })
+    sdk.runPersistedQuery('pure-headless/teaser', { path: `/content/dam/${context.project}/hero` })
       .then(({ data }) => {
         if (data) {
           setContent(data);

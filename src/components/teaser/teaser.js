@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Video from '../video';
 import { Link } from 'react-router-dom';
 import './teaser.css';
-import { AppContext } from '../../utils/Context';
+import { AppContext } from '../../utils/context';
 
 
 const Teaser = ({ content }) => {

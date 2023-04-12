@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Home from './screens/home/home';
-import { AppContext } from './utils/Context';
+import { AppContext } from './utils/context';
 
 const App = () => {
   const context = useContext(AppContext);
