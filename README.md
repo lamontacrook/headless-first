@@ -94,11 +94,7 @@ We will give it a title and name and select GraphQL Persisted Queires and Conten
 
 ![cloud config](./src/media/cloud-config.png)
 
-4. Under policies, select the new models to the "Allowed Content Fragment Models by Path" and click "Save & New".
-
-![policies](./src/media/policies.png)
-
-5. Let's now click into our new folder and create a teaser.  Click "Create" and "Content Fragment" and select the Teaser model.  Give the model a name and click "Create" and name it "Hero".
+4. Let's now click into our new folder and create a teaser.  Click "Create" and "Content Fragment" and select the Teaser model.  Give the model a name and click "Create" and name it "Hero".
 
 | Name | Notes |
 |----------|------|
@@ -188,7 +184,9 @@ NOTE: You will need to adjust this based your folder and fragment names.
 
 Run the query and you should receive the results of the fragment just created.
 
-5. Now let's persist (save) the query and give it a name.
+5. Now let's persist (save) the query and give it a name.  Click the "Save" button in the GraphiQL interface.
+
+
 
 
 

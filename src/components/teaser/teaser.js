@@ -47,9 +47,6 @@ const Teaser = ({ content }) => {
               <p>{content.description.plaintext}</p>
             )}
 
-            {/* {content.callToAction && content.callToActionLink && content.style === 'featured' && (
-              <Link to={LinkManager(content.callToActionLink._path, config, context)} className='button'>{content.callToAction}</Link>
-            )} */}
           </div>
         </div>
 
