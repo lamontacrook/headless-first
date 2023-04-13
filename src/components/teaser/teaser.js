@@ -2,26 +2,26 @@
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Video from '../video';
-import { Link } from 'react-router-dom';
+import Image from '../image/image';
 import './teaser.css';
 import { AppContext } from '../../utils/context';
 
 
 const Teaser = ({ content }) => {
   const context = useContext(AppContext);
-  content = content.component && content.component.item;
-  
-  useEffect(() => {
+    
+  console.log(content.asset.__typename);
 
-  }, []);
-  
   return (
     <React.Fragment>
-      <section className={'teaser ' + content.style} data-model={content.title} data-fragment={content._path}>
+      <section className={'teaser ' + content.style}>
 
         <div className='container'>
-          {content.asset && Object.prototype.hasOwnProperty.call(content.asset, 'format') &&
+          {content.asset.__typename === 'MultimediaRef' &&
             (<Video content={content.asset} context={context} />)}
+
+          {content.asset.__typename === 'ImageRef' &&
+            (<Image content={content.asset} context={context} />)}
 
           <div className='content-block'>
             {content.title && content.style === 'hero' && (

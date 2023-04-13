@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import AEMHeadless from '@adobe/aem-headless-client-js';
-import { useErrorHandler } from 'react-error-boundary';
 import { AppContext } from '../../utils/context';
 import Teaser from '../../components/teaser/teaser';
 
@@ -8,7 +7,6 @@ import './home.css';
 
 const Home = () => {
   const [content, setContent] = useState({});
-  const handleError = useErrorHandler();
   const context = useContext(AppContext);
 
   useEffect(() => {
@@ -25,16 +23,15 @@ const Home = () => {
         }
       })
       .catch((error) => {
-        console.log('here');
-        error.message = `Error with gql-demo-teaser request:\n ${error.message}`;
-        handleError(error);
+        console.log(`Error with pure-headless/teaser. ${error.message}`);
       });
-  }, [context, handleError]);
+
+  }, [context]);
 
   return (
     <div className='main-body'>
-      <div>{Object.keys(content).length && (
-        <Teaser content={content} />)}</div>
+      <div>{Object.keys(content).length  !== 0 && (
+        <Teaser content={content.component.item} />)}</div>
     </div>
   );
 };

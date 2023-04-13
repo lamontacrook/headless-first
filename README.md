@@ -15,10 +15,9 @@ REACT_APP_TOKEN=<developer token>
 
 ![developer console](./src/media/developer-console.png)
 
-Open the Program containing the AEM as a Cloud Service environment to integrate with
-Tap the ellipsis next to the environment in the Environments section, and select Developer Console
-Tap in the Integrations tab
-Tap Get Local Development Token button
-Tap on the download button in the top left corner to download the JSON file containing accessToken value, and save the JSON file to a safe location on your development machine.
-This is your 24 hour, developer access token to the AEM as a Cloud Service environment.
-AEM Developer Console - Integrations - Get Local Development Token
+3. Click in the Integrations tab
+4. Click Local Token tab & Get Local Development Token button
+5. Copy the access token beginning after the open quote until before the close quote.
+6. Paste the copied token into the `.env` file above.
+7. Let's now build the app by entering `npm ci` in the terminal.
+8. Now we can begin the local app and by entering `npm run start`.
