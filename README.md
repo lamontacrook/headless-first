@@ -1,23 +1,49 @@
 # Lesson 1 
 
-## Configuring the `.env` file.  
+## Connect the app to AEM 
 
-1. Create a file named `.env` at the root of the project.  In this file we will set a few values.
+1. We first need to import the `AEMHeadless` library.  This library is a helper library that we will use within out app.
 
+Add this import statement to the home.js.
+
+`import AEMHeadless from '@adobe/aem-headless-client-js';`
+
+2. We will now instatiate the sdk.  Let's add a new `const` inside of `useEffect()`.
+
+```javascript
+useEffect(() => {
+    const sdk = new AEMHeadless({
+      serviceURL: context.url,
+      endpoint: context.endpoint,
+      auth: context.token
+    });
+    ...
 ```
-REACT_APP_AEM=<URL of the AEM instance>
-REACT_APP_ENDPOINT=<the name of your endpoint>
-REACT_APP_PROJECT=<the name of your project>
-REACT_APP_TOKEN=<developer token>
+
+NOTE: There is a `context.js` file under `/utils` that is reading elements from the `.env` file.  For reference, the `context.url` is the URL of your sandbox environment.  The `context.endpoint` is the full path to your endpoint created in the previous lesson.  Lastly, the `context.token` is the developer token.
+
+3. Let's create two new `const` that writes and reads the asyncronous content coming from the sdk.
+
+```javascript
+const Home = () => {
+  const [content, setContent] = useState({});
 ```
 
-2. You can retrieve a developer token in Cloud Manager. Log in to Adobe Cloud Manager by navigating [here](https://experience.adobe.com/).  Click Experience Manager > Cloud Manager.  Choose the appropriate program and then click the 3 dots next to the environment.
+4. We now need to connect our app to to AEM.  We will use a persisted query that we created a saved in the previous lesson.  Let's add the following code insite of `useEffect`.
 
-![developer console](./src/media/developer-console.png)
+```javascript
+  ...
 
-3. Click in the Integrations tab
-4. Click Local Token tab & Get Local Development Token button
-5. Copy the access token beginning after the open quote until before the close quote.
-6. Paste the copied token into the `.env` file above.
-7. Let's now build the app by entering `npm ci` in the terminal.
-8. Now we can begin the local app and by entering `npm run start`.
+  sdk.runPersistedQuery('<name of your endpoint>/<name of your persisted query>', { path: `/content/dam/${context.project}/<name of your teaser fragment>` })
+    .then(({ data }) => {
+      if (data) {
+        setContent(data);
+      }
+    })
+    .catch((error) => {
+      console.log(`Error with pure-headless/teaser. ${error.message}`);
+    });
+}, [context]);
+```
+
+We also need to pass the `context` variable to `useEffect()` as you will see above.

@@ -16,6 +16,7 @@ const Home = () => {
       auth: context.token
     });
 
+
     sdk.runPersistedQuery('pure-headless/teaser', { path: `/content/dam/${context.project}/hero` })
       .then(({ data }) => {
         if (data) {
@@ -30,7 +31,7 @@ const Home = () => {
 
   return (
     <div className='main-body'>
-      <div>{Object.keys(content).length  !== 0 && (
+      <div>{Object.keys(content).length !== 0 && (
         <Teaser content={content.component.item} />)}</div>
     </div>
   );
