@@ -47,3 +47,40 @@ const Home = () => {
 ```
 
 We also need to pass the `context` variable to `useEffect()` as you will see above.
+
+5. Let's not look at the developer tools in our browser and view the GraphQL request.
+
+![dev tools](./src/media/dev-tools.png)
+
+The SDK will encode the request for GraphQL and add then necessary parameters.  You may open the request in the browser.  (NOTE: Since the request is going to the author environment you will need to be logged into the enviroment in another tab of the same browser.)
+
+`<url to environment>/graphql/execute.json/pure-headless/teaser%3Bpath%3D%2Fcontent%2Fdam%2Fpure-headless%2Fhero`
+
+6. Let's now print out some of this content on the page.  We can return a `<div />` with the teaser's title.
+
+```
+return (
+  <div className='main-body'>
+    <div>{content.component && (content.component.item.title)}</div>
+  </div>
+);
+```
+
+You should see the title field of your teaser printed on the screen.
+
+7. Last step of this lesson is to add the teaser to the page.  I have included a REACT teaser component in the package.  First, let's include the import.  At the top of the `home.js` file, add the line:
+
+`import Teaser from '../../components/teaser/teaser';`
+
+Now let's update the return statement:
+
+```
+return (
+  <div className='main-body'>
+    <div>{content.component && <Teaser content={content.component.item} />}</div>
+  </div>
+);
+```
+
+You should now see the teaser with the content included within the fragment.
+

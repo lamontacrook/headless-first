@@ -31,8 +31,7 @@ const Home = () => {
 
   return (
     <div className='main-body'>
-      <div>{Object.keys(content).length !== 0 && (
-        <Teaser content={content.component.item} />)}</div>
+      <div>{content.component && <Teaser content={content.component.item} />}</div>
     </div>
   );
 };
