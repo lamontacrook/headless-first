@@ -6,8 +6,8 @@ import Teaser from '../../components/teaser/teaser';
 import './home.css';
 
 const Home = () => {
-  const [content, setContent] = useState({});
   const context = useContext(AppContext);
+  const [content, setContent] = useState({});
 
   useEffect(() => {
     const sdk = new AEMHeadless({

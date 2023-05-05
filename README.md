@@ -25,24 +25,96 @@ REACT_APP_TOKEN=<developer token>
 
 ## Connect the app to AEM 
 
-1. We first need to import the `AEMHeadless` library.  This library is a helper library that we will use within out app.
+1. In order to connect our App to AEM, lets add a few things to our `App.js`.  In our first import we need to add `useContext`.
+
+```javascript
+import React, {useContext} from 'react';
+```
+
+We also need to define our `AppContext` by the `context.js` file.
+
+```javascript
+import { AppContext } from './utils/context';
+```
+
+Now within our app code let define a context variable.
+
+```javascript
+const context = useContext(AppContext);
+```
+
+And, finally we will wrap our return code in our `AppContext.Provider`.
+
+```javascript
+<AppContext.Provider value={context}>
+ 
+ 
+</AppContext.Provider>
+```
+
+For reference, our `App.js` should now be like this.
+
+```javascript
+import React, {useContext} from 'react';
+import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './screens/home/home';
+import { AppContext } from './utils/context';
+
+const App = () => {
+  const context = useContext(AppContext);
+  return (
+    <div className='App'>
+      <AppContext.Provider value={context}>
+        <BrowserRouter>
+          <Routes>
+            <Route exact={true} path={'/'} element={<Home />} />
+          </Routes>
+        </BrowserRouter>
+      </AppContext.Provider>
+    </div>
+  );
+};
+
+export default App;
+```
+
+2. Now we will need to import the `AEMHeadless` library.  This library is a helper library that we will use within out app.
 
 Add this import statement to the home.js.
 
 ```javascript
 import AEMHeadless from '@adobe/aem-headless-client-js';
 ```
+We also will want to import `{ useContext, useEffect, useState }` in our first REACT import statement.
+
+```javascript
+import React, { useContext, useEffect, useState } from 'react';
+```
+
+We will also need to import our context.
+
+```javascript
+import { AppContext } from '../../utils/context';
+```
+
+And inside our component, we will define a `context` variable.
+
+```javascript
+const Home = () => {
+  const context = useContext(AppContext);
+```
 
 2. We will now instatiate the sdk.  Let's add a new `const` inside of `useEffect()`.
 
 ```javascript
 useEffect(() => {
-    const sdk = new AEMHeadless({
-      serviceURL: context.url,
-      endpoint: context.endpoint,
-      auth: context.token
-    });
-    ...
+  const sdk = new AEMHeadless({
+    serviceURL: context.url,
+    endpoint: context.endpoint,
+    auth: context.token
+  });
+}, [context]);  
 ```
 
 NOTE: There is a `context.js` file under `/utils` that is reading elements from the `.env` file.  For reference, the `context.url` is the URL of your sandbox environment.  The `context.endpoint` is the full path to your endpoint created in the previous lesson.  Lastly, the `context.token` is the developer token.
