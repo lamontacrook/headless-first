@@ -1,20 +1,12 @@
 
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import Video from '../video';
-import { Link } from 'react-router-dom';
-import { AppContext } from '../../utils/Context';
 
 import './teaser.css';
 
 const Teaser = ({ content }) => {
-  const context = useContext(AppContext);
-  content = content.component && content.component.item;
-  
-  useEffect(() => {
-
-  }, []);
-  
+   
   return (
     <React.Fragment>
       <section className={'teaser ' + content.style} data-model={content.title} data-fragment={content._path}>
