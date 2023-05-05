@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Video = ({ content, context }) => {
+const Video = ({ content }) => {
   let poster = content._authorUrl;
   poster += '/jcr%3Acontent/renditions/cq5dam.zoom.2048.2048.jpeg';
   

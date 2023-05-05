@@ -4,7 +4,7 @@
 
 1. Create a file named `.env` at the root of the project.  In this file we will set a few values.
 
-```
+```javascript
 REACT_APP_AEM=<URL of the AEM instance>
 REACT_APP_ENDPOINT=<the name of your endpoint>
 REACT_APP_PROJECT=<the name of your project>
@@ -13,7 +13,7 @@ REACT_APP_TOKEN=<developer token>
 
 2. You can retrieve a developer token in Cloud Manager. Log in to Adobe Cloud Manager by navigating [here](https://experience.adobe.com/).  Click Experience Manager > Cloud Manager.  Choose the appropriate program and then click the 3 dots next to the environment.
 
-![developer console](./src/media/developer-console.png)
+![developer console](./assets/developer-console.png)
 
 3. Click in the Integrations tab
 4. Click Local Token tab & Get Local Development Token button
@@ -21,6 +21,7 @@ REACT_APP_TOKEN=<developer token>
 6. Paste the copied token into the `.env` file above.
 7. Let's now build the app by entering `npm ci` in the terminal.
 8. Now we can begin the local app and by entering `npm run start`.
+9. You will find in [./src/utils](./src/utils/) a file call `context.js` that include the necessary code to set the values in the `.env` file into the context of the app.
 
 ## Connect the app to AEM 
 
@@ -28,7 +29,9 @@ REACT_APP_TOKEN=<developer token>
 
 Add this import statement to the home.js.
 
-`import AEMHeadless from '@adobe/aem-headless-client-js';`
+```javascript
+import AEMHeadless from '@adobe/aem-headless-client-js';
+```
 
 2. We will now instatiate the sdk.  Let's add a new `const` inside of `useEffect()`.
 

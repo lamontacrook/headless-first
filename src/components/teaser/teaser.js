@@ -1,5 +1,5 @@
 
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import Video from '../video';
 import Image from '../image/image';
@@ -10,8 +10,6 @@ import { AppContext } from '../../utils/context';
 const Teaser = ({ content }) => {
   const context = useContext(AppContext);
     
-  console.log(content.asset.__typename);
-
   return (
     <React.Fragment>
       <section className={'teaser ' + content.style}>
