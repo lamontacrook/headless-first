@@ -41,13 +41,13 @@ There is a slack channel available should you need support with setup in advance
 
 1. Navigate to Tools > Configuration Browswer and we will create a new configuration.
 
-![Create folder](./src/media/create-configuration.png)
+![Create folder](./assets/create-configuration.png)
 
 We will give it a title and name and select GraphQL Persisted Queires and Content Fragment Models.
 
 2. Navigate to Tools > Content Fragment Models and click into the folder with the name of the configuration you just created.
 
-![Model Folder](./src/media/model-folder.png)
+![Model Folder](./assets/model-folder.png)
 
 3. Inside the folder we will create a new model called Teaser.  Click create and give the model the name "Teaser".  To our teaser model we will give the follow datatypes.
 
@@ -59,7 +59,7 @@ We will give it a title and name and select GraphQL Persisted Queires and Conten
 | Multi line text | Description | no | Ensure default type is rich text |
 | Enumeration | Style | yes | Render as dropdown.  Options are Hero -> hero and Featured -> featured |
 
-![Teaser model](./src/media/teaser-model.png)
+![Teaser model](./assets/teaser-model.png)
 
 4. Inside the folder we will create a second new model called Offer.  Click create and give the model the name "Offer".  To our offer model we will give the follow datatypes.
 
@@ -69,7 +69,7 @@ We will give it a title and name and select GraphQL Persisted Queires and Conten
 | Single line text | Call to Action | yes | |
 | Multi line text | Description | no ||
 
-![Offer model](./src/media/offer-model.png)
+![Offer model](./assets/offer-model.png)
 
 
 5. Inside the folder we will create a second new model called Image List.  Click create and give the model the name "Image List".  To our imagelist model we will give the follow datatypes.
@@ -78,21 +78,21 @@ We will give it a title and name and select GraphQL Persisted Queires and Conten
 |----------|------|----------|---------|
 | Fragement Reference | List Items | yes | Render as Multiple Field.  Allowed content fragment model is Offer. |
 
-![Image List Model](./src/media/imagelist-model.png)
+![Image List Model](./assets/imagelist-model.png)
 
 ## Create Content
 
 1. Now navigate to Assets and let's create a folder for our new site. Click create and name your folder.
 
-![Add folder](./src/media/create-folder.png)
+![Add folder](./assets/create-folder.png)
 
 2. After the folder is created, select the folder and choose the properties navigation item.
 
-![Properties](./src/media/properties.png)
+![Properties](./assets/properties.png)
 
 3. In cloud configurations, change the configuration to our new configuration that we created at the beginning of this tutorial.
 
-![cloud config](./src/media/cloud-config.png)
+![cloud config](./assets/cloud-config.png)
 
 4. Let's now click into our new folder and create a teaser.  Click "Create" and "Content Fragment" and select the Teaser model.  Give the model a name and click "Create" and name it "Hero".
 
@@ -104,17 +104,17 @@ We will give it a title and name and select GraphQL Persisted Queires and Conten
 | Description | You may leave blank. |
 | Style | Choose Hero. |
 
-![hero fragment](./src/media/hero-fragment.png)
+![hero fragment](./assets/hero-fragment.png)
 
 ## Create an endpoint
 
 1. Navigate to Tools > GraphQL.
 
-![graphql](./src/media/endpoint-nav.png)
+![graphql](./assets/endpoint-nav.png)
 
 2. Click "Create" and give your new endpoint a name and choose the newly created configuration.
 
-![endpoint](./src/media/endpoint.png)
+![endpoint](./assets/endpoint.png)
 
 3. Let's test our new endpoint.  Navigate to Tools > GraphQL Query Editor and choose our endpoint for the top right drop down.
 
@@ -186,26 +186,9 @@ Run the query and you should receive the results of the fragment just created.
 
 5. Now let's persist (save) the query and give it a name.  Click the "Save" button in the GraphiQL interface.
 
-## Configuring the `.env` file & starting the app.  
+## Clone the project
 
-1. Create a file named `.env` at the root of the project.  In this file we will set a few values.
+1. In Visual Studio Code, select the wheel icon in the lower left and select the command pallet.
 
-```
-REACT_APP_AEM=<URL of the AEM instance>
-REACT_APP_ENDPOINT=<the name of your endpoint>
-REACT_APP_PROJECT=<the name of your project>
-REACT_APP_TOKEN=<developer token>
-```
-
-2. You can retrieve a developer token in Cloud Manager. Log in to Adobe Cloud Manager by navigating [here](https://experience.adobe.com/).  Click Experience Manager > Cloud Manager.  Choose the appropriate program and then click the 3 dots next to the environment.
-
-![developer console](./src/media/developer-console.png)
-
-3. Click in the Integrations tab
-4. Click Local Token tab & Get Local Development Token button
-5. Copy the access token beginning after the open quote until before the close quote.
-6. Paste the copied token into the `.env` file above.
-7. Let's now build the app by entering `npm ci` in the terminal.
-8. Now we can begin the local app and by entering `npm run start`.
-
+![command-pallet](./assets/command-palet.png)
 
