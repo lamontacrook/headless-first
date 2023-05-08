@@ -126,11 +126,9 @@ const Home = () => {
   const [content, setContent] = useState({});
 ```
 
-4. We now need to connect our app to to AEM.  We will use a persisted query that we created a saved in the previous lesson.  Let's add the following code insite of `useEffect`.
+4. We now need to connect our app to to AEM.  We will use a persisted query that we created a saved in the previous lesson.  Let's add the following code insite of `useEffect` after the the sdk is initialized.
 
 ```javascript
-  ...
-
   sdk.runPersistedQuery('<name of your endpoint>/<name of your persisted query>', { path: `/content/dam/${context.project}/<name of your teaser fragment>` })
     .then(({ data }) => {
       if (data) {
@@ -145,7 +143,7 @@ const Home = () => {
 
 We also need to pass the `context` variable to `useEffect()` as you will see above.
 
-5. Let's not look at the developer tools in our browser and view the GraphQL request.
+5. Let's now look at the developer tools in our browser and view the GraphQL request.
 
 ![dev tools](./src/media/dev-tools.png)
 
@@ -155,7 +153,7 @@ The SDK will encode the request for GraphQL and add then necessary parameters.  
 
 6. Let's now print out some of this content on the page.  We can return a `<div />` with the teaser's title.
 
-```
+```javascript
 return (
   <div className='main-body'>
     <div>{content.component && (content.component.item.title)}</div>
@@ -171,7 +169,7 @@ You should see the title field of your teaser printed on the screen.
 
 Now let's update the return statement:
 
-```
+```javascript
 return (
   <div className='main-body'>
     <div>{content.component && <Teaser content={content.component.item} />}</div>
