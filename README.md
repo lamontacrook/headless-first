@@ -88,8 +88,6 @@ We will give it a title and name and select GraphQL Persisted Queires and Conten
 
 2. After the folder is created, select the folder and choose the properties navigation item.
 
-![Properties](./assets/properties.png)
-
 3. In cloud configurations, change the configuration to our new configuration that we created at the beginning of this tutorial.
 
 ![cloud config](./assets/cloud-config.png)
