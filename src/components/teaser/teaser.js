@@ -1,4 +1,3 @@
-
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import Video from '../video';
@@ -9,7 +8,7 @@ import { AppContext } from '../../utils/context';
 
 const Teaser = ({ content }) => {
   const context = useContext(AppContext);
-    
+  
   return (
     <React.Fragment>
       <section className={'teaser ' + content.style}>
@@ -44,10 +43,7 @@ const Teaser = ({ content }) => {
             {content.description && content.style === 'featured' && (
               <p>{content.description.plaintext}</p>
             )}
-
-            {/* {content.callToAction && content.callToActionLink && content.style === 'featured' && (
-              <Link to={LinkManager(content.callToActionLink._path, config, context)} className='button'>{content.callToAction}</Link>
-            )} */}
+            
           </div>
         </div>
 
