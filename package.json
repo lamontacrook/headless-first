@@ -1,18 +1,19 @@
 {
   "name": "pure-headless",
   "version": "0.1.0",
-  "homepage": "https://aem-pure-headless.vercel.app/",
+  "homepage": "",
   "author": "Lamont Crook (https://github.com/lamontacrook)",
   "contributors": [
     "Lamont Crook (lamont@adobe.com)"
   ],
   "repository": "lamontacrook/aem-pure-headless",
   "bugs": {
-    "url": "https://github.com/lamontacrook/aem-pure-headless/issues"
+    "url": "https://github.com/lamontacrook/headless-first/issues"
   },
   "private": true,
   "dependencies": {
     "@adobe/aem-headless-client-js": "^3.2.0",
+    "@adobe/universal-editor-cors": "^1.0.3",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -30,6 +31,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start-ssl":"export HTTPS=true&&SSL_CRT_FILE=cert.pem&&SSL_KEY_FILE=key.pem react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
