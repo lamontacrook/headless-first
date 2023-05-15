@@ -18,10 +18,8 @@ module.exports = {
 		"react-hooks"
 	],
 	'rules': {
-		'indent': [
-			'error',
-			2
-		],
+		'react/no-unknown-property': ['warn', { ignore: ['itemfilter'] }],
+		'react/prop-types': [2, { ignore: ['format'] }],
 		'no-unused-vars': [
 			'warn', { 
 				'vars': 'all',
@@ -29,17 +27,9 @@ module.exports = {
 				'ignoreRestSiblings': false 
 			}
 		],
-		'linebreak-style': [
-			'error',
-			'unix'
-		],
 		'quotes': [
-			'error',
+			'warn',
 			'single'
-		],
-		'semi': [
-			'error',
-			'always'
 		],
 		"react-hooks/rules-of-hooks": "error",
 		"react-hooks/exhaustive-deps": "warn"
