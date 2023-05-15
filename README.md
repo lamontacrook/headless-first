@@ -102,7 +102,7 @@ We will give it a title and name and select GraphQL Persisted Queires and Conten
 | Description | You may leave blank. |
 | Style | Choose Hero. |
 
-![hero fragment](./assets/hero-fragment.png)
+![hero fragment](./assets/teaser-model.png)
 
 ## Create an endpoint
 
