@@ -1,18 +1,13 @@
 .hero {
   position: sticky;
   width: 100vw;
-  height: 100vh;
+  min-height:800px;
   display: flex;
   justify-content: center;
   align-items: center;
   opacity: 1;
+  background-color: black;
 }
-
-/* .hero>.container {
-  height: 100vh;
-  padding-bottom: 50px;
-  padding-top: 50px;
-} */
 
 header .hero>.container img {
   /* min-width: 100%; */
