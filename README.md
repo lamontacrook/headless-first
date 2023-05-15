@@ -131,7 +131,7 @@ You should get a list of 1 fragment that you just created.
 
 For our exercise, let's create a full query that our app can use.
 
-```
+```javascript
 query TeaserByPath($path: String!) {
   component: teaserByPath(_path: $path) {
     item {
