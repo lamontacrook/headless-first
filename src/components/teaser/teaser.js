@@ -11,7 +11,7 @@ const Teaser = ({ content }) => {
   return (
     <React.Fragment>
       <section className={'teaser ' + content.style}>
-        <div className='container' itemID={`urn:aemconnection:${content._path}/jcr:content/data/master`} itemType='reference' itemScope>
+        <div className='container' itemID={`urn:aemconnection:${content._path}/jcr:content/data/master`} itemfilter='cf' itemType='reference' itemScope>
           {content.asset.__typename === 'MultimediaRef' &&
             (<Video content={content.asset} />)}
 
@@ -20,11 +20,11 @@ const Teaser = ({ content }) => {
 
           <div className='content-block'>
             {content.title && content.style === 'hero' && (
-              <h1 itemProp='preTitle' itemType='text'>{content.title}</h1>
+              <h1 itemProp='title' itemType='text'>{content.title}</h1>
             )}
 
             {content.title && content.style === 'featured' && (
-              <h2 itemProp='preTitle' itemType='text'>{content.title}</h2>
+              <h2 itemProp='title' itemType='text'>{content.title}</h2>
             )}
 
             <span className='seperator'></span>

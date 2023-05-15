@@ -13,7 +13,7 @@ const Image = ({ src }) => {
  
   return (
     <picture>
-      <img itemProp='_dynamicUrl' itemType='image' src={`${context.url.replace(/\/$/, '')}${src}` }
+      <img src={`${context.url.replace(/\/$/, '')}${src}` }
         srcSet={srcset.join(',')}
       />
     </picture>
