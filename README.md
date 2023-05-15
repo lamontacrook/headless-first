@@ -145,7 +145,7 @@ We also need to pass the `context` variable to `useEffect()` as you will see abo
 
 5. Let's now look at the developer tools in our browser and view the GraphQL request.
 
-![dev tools](./src/media/dev-tools.png)
+![dev tools](./assets/dev-tools.png)
 
 The SDK will encode the request for GraphQL and add then necessary parameters.  You may open the request in the browser.  (NOTE: Since the request is going to the author environment you will need to be logged into the enviroment in another tab of the same browser.)
 
