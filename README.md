@@ -182,7 +182,7 @@ NOTE: You will need to adjust this based your folder and fragment names.
 
 Run the query and you should receive the results of the fragment just created.
 
-5. Now let's persist (save) the query and give it a name.  Click the "Save" button in the GraphiQL interface.
+5. Now let's persist (save) the query and give it a name (teaser).  Click the "Save" button in the GraphiQL interface.
 
 ## Clone the project
 
