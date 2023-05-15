@@ -7,7 +7,7 @@
 ```javascript
 REACT_APP_AEM=<URL of the AEM instance>
 REACT_APP_ENDPOINT=<the name of your endpoint>
-REACT_APP_PROJECT=<the name of your project>
+REACT_APP_PROJECT=<the name of your folder with CF's>
 REACT_APP_TOKEN=<developer token>
 ```
 
