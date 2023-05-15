@@ -143,7 +143,7 @@ Eu facilisis sed odio morbi quis. Consequat semper viverra nam libero justo laor
 
 3. Let's return to the query editor and fetch this new component.  Notice that we are referencing the `OfferModel` in our query and the metadata, which we will use for the title of the card.
 
-```json
+```javascript
 query imageList {
   cards: imageListList(
     _assetTransform: {
@@ -163,7 +163,7 @@ query imageList {
             }
           }
           description {
-            html
+            json
           }
           asset {
             ...on ImageRef {
