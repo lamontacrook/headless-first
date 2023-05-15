@@ -19,6 +19,7 @@ module.exports = {
 	],
 	'rules': {
 		'react/no-unknown-property': ['warn', { ignore: ['itemfilter'] }],
+		'react/prop-types': [2, { ignore: ['format'] }],
 		'no-unused-vars': [
 			'warn', { 
 				'vars': 'all',
