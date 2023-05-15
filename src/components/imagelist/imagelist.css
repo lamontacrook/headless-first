@@ -8,7 +8,7 @@
 }
 
 .main-body .card {
-  max-width: 380px;
+  width: 380px;
   display: flex;
   flex-direction: column;
   margin: 0 10px;
