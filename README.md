@@ -236,3 +236,70 @@ const srcset = [
   `${context.url.replace(/\/$/, '') + src.replace('width=1900', 'width=')} 600w`
 ];
 ```
+
+## Enable Universal Editor
+
+1. Add `<meta />` to the app.  Open `App.js` and insert import at the top of the file.
+
+```javascript
+import { Helmet } from 'react-helmet';
+```
+
+And within the App return add the following code:
+
+```javascript
+<Helmet>
+  <meta name='urn:auecon:aemconnection' content={`aem:${context.url}`} />
+</Helmet>
+```
+
+NOTE: We are using the Helmet library to make this dynamic based on the `.env` file, however you can hard-code this into the `index.html`.
+
+2.  Now let's update are Card to identify the fragment and datatype for editing each card.
+
+Within `<div className='card' key={card._path}>`
+
+add 
+
+```javascript
+itemID={`urn:aemconnection:${card._path}/jcr:content/data/master`} itemfilter='cf' itemType='reference' itemScope
+```
+
+You should now have:
+
+```javascript
+<div className='card' key={card._path} itemID={`urn:aemconnection:${card._path}/jcr:content/data/master`} itemfilter='cf' itemType='reference' itemScope>
+```
+
+3. We now need to identify what we want editable.
+
+To our `<h3 />` add:
+
+```javascript
+itemProp="_metadata" itemType="text"
+```
+
+To our `<div />` add:
+```javascript
+itemProp="description" itemType="richtext"
+```
+
+The final code for the card:
+
+```javascript
+const Cards = ({ content }) => {
+  return (
+    <div className='cards'>
+      {content && content.map((card) => (
+        <div className='card' key={card._path} itemID={`urn:aemconnection:${card._path}/jcr:content/data/master`} itemfilter='cf' itemType='reference' itemScope>
+          <Image src={card.asset._dynamicUrl} />
+          <h3 itemProp="_metadata" itemType="text">{card._metadata && parseName(card)}</h3>
+          <div itemProp="description"
+            itemType="richtext">{mapJsonRichText(card.description.json)}</div>
+        </div>
+      ))}
+    </div>
+  );
+};
+```
+
