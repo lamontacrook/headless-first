@@ -10,8 +10,8 @@ const Teaser = ({ content }) => {
   
   return (
     <React.Fragment>
-      <section className={'teaser ' + content.style}>
-        <div className='container' itemID={`urn:aemconnection:${content._path}/jcr:content/data/master`} itemfilter='cf' itemType='reference' itemScope>
+      <section className={'teaser ' + content.style} itemID={`urn:aemconnection:${content._path}/jcr:content/data/master`} itemfilter='cf' itemType='reference' itemScope>
+        <div className='container'>
           {content.asset.__typename === 'MultimediaRef' &&
             (<Video content={content.asset} />)}
 
