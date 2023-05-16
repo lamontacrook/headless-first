@@ -177,7 +177,13 @@ query imageList {
 }
 ```
 
-4. Now let's connect this to our app.  In our `home.js`, we will reference our new query. 
+4. Now let's connect this to our app.  In our `home.js`, we will reference our new query. Above `useEffect()` we will set `list` and `setList`.
+
+```javascript
+const [list, setList] = useState({});
+```
+
+Inside `useEffect()` a new request for the imagelist query.
 
 ```javascript
 sdk.runPersistedQuery('pure-headless/imagelist')
