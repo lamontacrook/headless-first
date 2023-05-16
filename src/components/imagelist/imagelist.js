@@ -21,11 +21,10 @@ const Cards = ({ content }) => {
   return (
     <div className='cards'>
       {content && content.map((card) => (
-        <div className='card' key={card._path} itemID={`urn:aemconnection:${card._path}/jcr:content/data/master`} itemfilter='cf' itemType='reference' itemScope>
+        <div className='card' key={card._path}>
           <Image src={card.asset._dynamicUrl} />
-          <h3 itemProp="_metadata" itemType="text">{card._metadata && parseName(card)}</h3>
-          <div itemProp="description"
-            itemType="richtext">{mapJsonRichText(card.description.json)}</div>
+          <h3>{card._metadata && parseName(card)}</h3>
+          <div>{mapJsonRichText(card.description.json)}</div>
         </div>
       ))}
     </div>
