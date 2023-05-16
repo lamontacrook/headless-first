@@ -66,8 +66,8 @@ We will give it a title and name and select GraphQL Persisted Queires and Conten
 | Datatype | Name | Required | Options |
 |----------|------|----------|---------|
 | Conent Reference | Asset | yes | Add default image. Ex: /content/dam/wknd-headless/assets/AdobeStock_238607111.jpeg |
-| Single line text | Call to Action | yes | |
 | Multi line text | Description | no ||
+| Multi line text | Article | no ||
 
 ![Offer model](./assets/offer-model.png)
 
