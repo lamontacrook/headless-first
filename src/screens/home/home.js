@@ -5,6 +5,13 @@ import Teaser from '../../components/teaser/teaser';
 
 import './home.css';
 
+///graphql/execute.json/pure-headless
+const context = ({
+  endpoint: `/content/_cq_graphql/${REACT_APP_ENDPOINT}/endpoint.json`,
+  url: 'https://author-p109262-e1066066.adobeaemcloud.com/',
+  project: 'pure-headless',
+});
+
 const Home = () => {
   const context = useContext(AppContext);
   const [content, setContent] = useState({});
@@ -13,7 +20,10 @@ const Home = () => {
     const sdk = new AEMHeadless({
       serviceURL: context.url,
       endpoint: context.endpoint,
-      auth: context.token
+      fetch: ((resource, options={}) => {
+        options.credentials = 'include';
+        return window.fetch(resource, options);
+      })
     });
 
 
