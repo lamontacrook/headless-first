@@ -1,21 +1,25 @@
 import React, { useContext, useEffect, useState } from 'react';
 import AEMHeadless from '@adobe/aem-headless-client-js';
-import { AppContext } from '../../utils/context';
 import Teaser from '../../components/teaser/teaser';
-import ImageList from '../../components/imagelist/imagelist';
 
 import './home.css';
 
 const Home = () => {
+  const context = {
+    endpoint: '/graphql/execute.json',
+    url: '<AEM Instance>',
+    project: '<Assets Folder>',
+  };
   const [content, setContent] = useState({});
-  const [list, setList] = useState({});
-  const context = useContext(AppContext);
 
   useEffect(() => {
     const sdk = new AEMHeadless({
       serviceURL: context.url,
       endpoint: context.endpoint,
-      auth: context.token
+      fetch: ((resource, options={}) => {
+        options.credentials = 'include';
+        return window.fetch(resource, options);
+      })
     });
 
 
@@ -29,22 +33,11 @@ const Home = () => {
         console.log(`Error with pure-headless/teaser. ${error.message}`);
       });
 
-    sdk.runPersistedQuery('pure-headless/imagelist')
-      .then(({ data }) => {
-        if (data) {
-          setList(data);
-        }
-      })
-      .catch((error) => {
-        console.log(`Error with pure-headless/imagelist. ${error.message}`);
-      });
-
-  }, [context]);
+  });
 
   return (
     <div className='main-body'>
       <div>{content.component && <Teaser content={content.component.item} />}</div>
-      <div>{list.cards && <ImageList content={list.cards} />}</div>
     </div>
   );
 };
