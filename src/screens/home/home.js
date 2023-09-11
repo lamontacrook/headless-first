@@ -5,15 +5,12 @@ import Teaser from '../../components/teaser/teaser';
 
 import './home.css';
 
-///graphql/execute.json/pure-headless
-const context = ({
-  endpoint: `/content/_cq_graphql/${REACT_APP_ENDPOINT}/endpoint.json`,
-  url: 'https://author-p109262-e1066066.adobeaemcloud.com/',
-  project: 'pure-headless',
-});
-
 const Home = () => {
-  const context = useContext(AppContext);
+  const context = {
+    endpoint: '/graphql/execute.json',
+    url: '<AEM Instance>',
+    project: '<Assets Folder>',
+  };
   const [content, setContent] = useState({});
 
   useEffect(() => {
@@ -37,7 +34,7 @@ const Home = () => {
         console.log(`Error with pure-headless/teaser. ${error.message}`);
       });
 
-  }, [context]);
+  });
 
   return (
     <div className='main-body'>
