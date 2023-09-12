@@ -1,19 +1,16 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './screens/home/home';
 
 const App = () => {
-  const context = useContext(AppContext);
   return (
     <div className='App'>
-      <AppContext.Provider value={context}>
-        <BrowserRouter>
-          <Routes>
-            <Route exact={true} path={'/'} element={<Home />} />
-          </Routes>
-        </BrowserRouter>
-      </AppContext.Provider>
+      <BrowserRouter>
+        <Routes>
+          <Route exact={true} path={'/'} element={<Home />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };

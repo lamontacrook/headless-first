@@ -1,17 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AEMHeadless from '@adobe/aem-headless-client-js';
-import { AppContext } from '../../utils/context';
 import Teaser from '../../components/teaser/teaser';
 
 import './home.css';
 
 const Home = () => {
+  const [content, setContent] = useState({});
   const context = {
     endpoint: '/graphql/execute.json',
-    url: '<AEM Instance>',
-    project: '<Assets Folder>',
+    url: 'https://author-p109352-e1066407.adobeaemcloud.com/',
+    project: 'pure-headless',
   };
-  const [content, setContent] = useState({});
 
   useEffect(() => {
     const sdk = new AEMHeadless({
@@ -34,7 +33,7 @@ const Home = () => {
         console.log(`Error with pure-headless/teaser. ${error.message}`);
       });
 
-  });
+  }, [context.url, context.endpoint, context.project]);
 
   return (
     <div className='main-body'>

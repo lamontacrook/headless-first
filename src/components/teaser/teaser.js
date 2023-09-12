@@ -1,7 +1,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Video from '../video';
 import Image from '../image/image';
 import './teaser.css';
 
@@ -12,11 +11,9 @@ const Teaser = ({ content }) => {
     <React.Fragment>
       <section className={'teaser ' + content.style} itemID={`urn:aemconnection:${content._path}/jcr:content/data/master`} itemfilter='cf' itemType='reference' itemScope>
         <div className='container'>
-          {content.asset.__typename === 'MultimediaRef' &&
-            (<Video content={content.asset} />)}
 
           {content.asset.__typename === 'ImageRef' &&
-            (<Image src={content.asset._dynamicUrl} />)}
+            (<Image asset={content.asset}  />)}
 
           <div className='content-block'>
             {content.title && content.style === 'hero' && (
