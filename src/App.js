@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Home from './screens/home/home';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const App = () => {
   const context = {
@@ -13,16 +12,11 @@ const App = () => {
 
   return (
     <div className='App'>
-      <HelmetProvider>
-        <Helmet>
-          <meta name='urn:auecon:aemconnection' content={`aem:${context.url}`} />
-        </Helmet>
-        <BrowserRouter>
-          <Routes>
-            <Route exact={true} path={'/'} element={<Home context={context}/>} />
-          </Routes>
-        </BrowserRouter>
-      </HelmetProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route exact={true} path={'/'} element={<Home context={context}/>} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };
