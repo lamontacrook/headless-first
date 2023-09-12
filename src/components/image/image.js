@@ -1,19 +1,21 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { AppContext } from '../../utils/context';
 
-const Image = ({ src }) => {
-  const context = useContext(AppContext);
+const Image = ({ asset, itemProp='asset' }) => {
+
+  const {_authorUrl, _dynamicUrl} = asset;
+  const url = new URL(_authorUrl);
+
   const srcset = [
-    `${context.url.replace(/\/$/, '') + src} 1900w`,
-    `${context.url.replace(/\/$/, '') + src.replace('width=1900', 'width=1200')} 1200w`,
-    `${context.url.replace(/\/$/, '') + src.replace('width=1900', 'width=900')} 900w`,
-    `${context.url.replace(/\/$/, '') + src.replace('width=1900', 'width=')} 600w`
+    `${url.origin + _dynamicUrl} 1900w`,
+    `${url.origin + _dynamicUrl.replace('width=1900', 'width=1200')} 1200w`,
+    `${url.origin + _dynamicUrl.replace('width=1900', 'width=900')} 900w`,
+    `${url.origin + _dynamicUrl.replace('width=1900', 'width=')} 600w`
   ];
- 
+
   return (
     <picture>
-      <img src={`${context.url.replace(/\/$/, '')}${src}` }
+      <img itemProp={itemProp} itemType="media" data-editor-itemlabel='Asset' src={`${_authorUrl}` }
         srcSet={srcset.join(',')}
       />
     </picture>
@@ -23,5 +25,6 @@ const Image = ({ src }) => {
 export default Image;
 
 Image.propTypes = {
-  src: PropTypes.string
+  asset: PropTypes.object,
+  itemProp: PropTypes.string
 };
