@@ -18,14 +18,18 @@ const ImageList = ({ content }) => {
 };
 
 const Cards = ({ content }) => {
+  const editorProps = {
+    itemfilter: 'cf',
+    itemType: 'reference',
+  };
+
   return (
     <div className='cards'>
       {content && content.map((card) => (
-        <div className='card' key={card._path} itemID={`urn:aemconnection:${card._path}/jcr:content/data/master`} itemfilter='cf' itemType='reference' itemScope>
-          <Image src={card.asset._dynamicUrl} />
-          <h3 itemProp="_metadata" itemType="text">{card._metadata && parseName(card)}</h3>
-          <div itemProp="description"
-            itemType="richtext">{mapJsonRichText(card.description.json)}</div>
+        <div className='card' key={card._path} data-editor-itemlabel={parseName(card)} {...editorProps} itemID={`urn:aemconnection:${card._path}/jcr:content/data/master`} itemScope>
+          <Image asset={card.asset} />
+          <h3>{card._metadata && parseName(card)}</h3>
+          <div itemProp="description" itemType="richtext">{mapJsonRichText(card.description.json)}</div>
         </div>
       ))}
     </div>

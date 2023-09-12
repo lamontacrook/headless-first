@@ -1,25 +1,28 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Home from './screens/home/home';
-import { AppContext } from './utils/context';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
-//<meta name="urn:auecon:aemconnection" content="aem:https://author-p101152-e938206.adobeaemcloud.com"></meta>
 const App = () => {
-  const context = useContext(AppContext);
+  const context = {
+    endpoint: '/graphql/execute.json',
+    url: 'https://author-p109352-e1066407.adobeaemcloud.com/',
+    project: 'pure-headless',
+  };
+
   return (
     <div className='App'>
-      <Helmet>
-        <meta name='urn:auecon:aemconnection' content={`aem:${context.url}`} />
-      </Helmet>
-      <AppContext.Provider value={context}>
+      <HelmetProvider>
+        <Helmet>
+          <meta name='urn:auecon:aemconnection' content={`aem:${context.url}`} />
+        </Helmet>
         <BrowserRouter>
           <Routes>
-            <Route exact={true} path={'/'} element={<Home />} />
+            <Route exact={true} path={'/'} element={<Home context={context}/>} />
           </Routes>
         </BrowserRouter>
-      </AppContext.Provider>
+      </HelmetProvider>
     </div>
   );
 };

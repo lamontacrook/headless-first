@@ -1,45 +1,49 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Video from '../video';
+import { mapJsonRichText } from '../../utils/renderRichText';
 import Image from '../image/image';
 import './teaser.css';
 
 
 const Teaser = ({ content }) => {
-  
+  const editorProps = {
+    itemID: `urn:aemconnection:${content._path}/jcr:content/data/master`,
+    itemfilter: 'cf',
+    itemType: 'reference',
+    'data-editor-itemlabel': 'Hero'
+  };
+
   return (
     <React.Fragment>
-      <section className={'teaser ' + content.style} itemID={`urn:aemconnection:${content._path}/jcr:content/data/master`} itemfilter='cf' itemType='reference' itemScope>
+      <section className={'teaser ' + content.style} {...editorProps} itemScope>
         <div className='container'>
-          {content.asset.__typename === 'MultimediaRef' &&
-            (<Video content={content.asset} />)}
-
+       
           {content.asset.__typename === 'ImageRef' &&
-            (<Image src={content.asset._dynamicUrl} />)}
+            (<Image asset={content.asset} />)}
 
           <div className='content-block'>
             {content.title && content.style === 'hero' && (
-              <h1 itemProp='title' itemType='text'>{content.title}</h1>
+              <h1 itemProp='title' itemType='text' data-editor-itemlable='Title'>{content.title}</h1>
             )}
 
             {content.title && content.style === 'featured' && (
-              <h2 itemProp='title' itemType='text'>{content.title}</h2>
+              <h2 itemProp='title' itemType='text' data-editor-itemlable='Title'>{content.title}</h2>
             )}
 
             <span className='seperator'></span>
 
             {content.preTitle && content.style === 'hero' && (
-              <h2 itemProp='preTitle' itemType='text'>{content.preTitle}</h2>
+              <h2 itemProp='preTitle' itemType='text' data-editor-itemlable='Pre-Title'>{content.preTitle}</h2>
             )}
 
             {content.preTitle && content.style === 'featured' && (
-              <h5 itemProp='preTitle' itemType='text'>{content.preTitle}</h5>
+              <h5 itemProp='preTitle' itemType='text' data-editor-itemlable='Pre-Title'>{content.preTitle}</h5>
             )}
 
 
             {content.description && content.style === 'featured' && (
-              <p itemProp='description' itemType='richtext'>{content.description.plaintext}</p>
+              <p itemProp='description' itemType='richtext'>{mapJsonRichText(content.description.json)}</p>
             )}     
           </div>
         </div>
