@@ -6,7 +6,7 @@ import Home from './screens/home/home';
 const App = () => {
   const context = {
     endpoint: '/graphql/execute.json',
-    url: <AEM URL>,
+    url: 'https://author-p109352-e1066407.adobeaemcloud.com/',
     project: 'pure-headless',
   };
 
