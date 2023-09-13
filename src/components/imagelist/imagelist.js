@@ -10,14 +10,13 @@ const ImageList = ({ content }) => {
   return (
     <div className='imagelist'>
       {content.items && content.items.map((items) => (
-        <Cards key={items} content={items.listItems} />
+        <Cards key={items} card={items.listItems} />
       ))}
-
     </div>
   );
 };
 
-const Cards = ({ content }) => {
+const Cards = ({ card }) => {
   const editorProps = {
     itemfilter: 'cf',
     itemType: 'reference',
@@ -25,19 +24,17 @@ const Cards = ({ content }) => {
 
   return (
     <div className='cards'>
-      {content && content.map((card) => (
-        <div className='card' key={card._path} data-editor-itemlabel={parseName(card)} {...editorProps} itemID={`urn:aemconnection:${card._path}/jcr:content/data/master`} itemScope>
-          <Image asset={card.asset} />
-          <h3>{card._metadata && parseName(card)}</h3>
-          <div itemProp="description" itemType="richtext">{mapJsonRichText(card.description.json)}</div>
-        </div>
-      ))}
+      <div className='card' key={card._path} data-editor-itemlabel={parseName(card)} {...editorProps} itemID={`urn:aemconnection:${card._path}/jcr:content/data/master`} itemScope>
+        <Image asset={card.asset} />
+        <h3>{card._metadata && parseName(card)}</h3>
+        <div itemProp="description" itemType="richtext">{mapJsonRichText(card.description.json)}</div>
+      </div>
     </div>
   );
 };
 
 Cards.propTypes = {
-  content: PropTypes.array
+  card: PropTypes.array
 };
 
 const parseName = ({ _metadata }) => {

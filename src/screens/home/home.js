@@ -21,7 +21,7 @@ const Home = ({ context }) => {
     });
 
 
-    sdk.runPersistedQuery('pure-headless/teaser', { path: `/content/dam/${context.project}/hero` })
+    sdk.runPersistedQuery('pure-headless/Teaser', { path: `/content/dam/${context.project}/hero` })
       .then(({ data }) => {
         if (data) {
           setContent(data);
