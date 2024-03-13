@@ -16,7 +16,7 @@ const Teaser = ({ content }) => {
             (<Video content={content.asset} />)}
 
           {content.asset.__typename === 'ImageRef' &&
-            (<Image src={content.asset._dynamicUrl} />)}
+            (<Image asset={content.asset} />)}
 
           <div className='content-block'>
             {content.title && content.style === 'hero' && (
