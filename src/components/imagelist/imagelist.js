@@ -22,7 +22,7 @@ const Cards = ({ content }) => {
     <div className='cards'>
       {content && content.map((card) => (
         <div className='card' key={card._path}>
-          <Image src={card.asset._dynamicUrl} />
+          <Image src={card.asset} />
           <h3>{card._metadata && parseName(card)}</h3>
           <div>{mapJsonRichText(card.description.json)}</div>
         </div>
