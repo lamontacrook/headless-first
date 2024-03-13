@@ -7,8 +7,15 @@ import './imagelist.css';
 
 const ImageList = ({ content }) => {
 
+  const editorProps = {
+    'data-aue-resource': `urn:aemconnection:${content._path}/jcr:content/data/master`,
+    'data-aue-type': 'container',
+    'data-aue-label': 'ImageList',
+    'data-aue-behavior': 'component',
+  };
+
   return (
-    <div className='imagelist'>
+    <div className='imagelist' {...editorProps}>
       {content.items && content.items.map((items) => (
         <Cards key={items} card={items.listItems} />
       ))}
@@ -17,17 +24,20 @@ const ImageList = ({ content }) => {
 };
 
 const Cards = ({ card }) => {
+  
   const editorProps = {
-    itemfilter: 'cf',
-    itemType: 'reference',
+    'data-aue-resource': `urn:aemconnection:${card._path}/jcr:content/data/master`,
+    'data-aue-type': 'reference',
+    'data-aue-label': parseName(card),
+    'data-aue-behavior': 'component',
   };
 
   return (
     <div className='cards'>
-      <div className='card' key={card._path} data-editor-itemlabel={parseName(card)} {...editorProps} itemID={`urn:aemconnection:${card._path}/jcr:content/data/master`} itemScope>
+      <div className='card' key={card._path} {...editorProps}>
         <Image asset={card.asset} />
         <h3>{card._metadata && parseName(card)}</h3>
-        <div itemProp="description" itemType="richtext">{mapJsonRichText(card.description.json)}</div>
+        <div data-aue-prop='description' data-aue-type='richtext'>{mapJsonRichText(card.description.json)}</div>
       </div>
     </div>
   );

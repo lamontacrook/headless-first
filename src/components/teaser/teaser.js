@@ -8,10 +8,10 @@ import './teaser.css';
 
 const Teaser = ({ content }) => {
   const editorProps = {
-    itemID: `urn:aemconnection:${content._path}/jcr:content/data/master`,
-    itemfilter: 'cf',
-    itemType: 'reference',
-    'data-editor-itemlabel': 'Hero'
+    'data-aue-resource': `urn:aemconnection:${content._path}/jcr:content/data/master`,
+    'data-aue-type': 'reference',
+    'data-aue-label': 'Hero',
+    'data-aue-filter': 'cf'
   };
 
   return (
@@ -24,26 +24,26 @@ const Teaser = ({ content }) => {
 
           <div className='content-block'>
             {content.title && content.style === 'hero' && (
-              <h1 itemProp='title' itemType='text' data-editor-itemlable='Title'>{content.title}</h1>
+              <h1 data-aue-prop='title' data-aue-type='text' data-aue-label='Title'>{content.title}</h1>
             )}
 
             {content.title && content.style === 'featured' && (
-              <h2 itemProp='title' itemType='text' data-editor-itemlable='Title'>{content.title}</h2>
+              <h2 data-aue-prop='title' data-aue-type='text' data-aue-label='Title'>{content.title}</h2>
             )}
 
             <span className='seperator'></span>
 
             {content.preTitle && content.style === 'hero' && (
-              <h2 itemProp='preTitle' itemType='text' data-editor-itemlable='Pre-Title'>{content.preTitle}</h2>
+              <h2 data-aue-prop='preTitle' data-aue-type='text' data-aue-label='Pre-Title'>{content.preTitle}</h2>
             )}
 
             {content.preTitle && content.style === 'featured' && (
-              <h5 itemProp='preTitle' itemType='text' data-editor-itemlable='Pre-Title'>{content.preTitle}</h5>
+              <h5 data-aue-prop='preTitle' data-aue-type='text' data-aue-label='Pre-Title'>{content.preTitle}</h5>
             )}
 
 
             {content.description && content.style === 'featured' && (
-              <p itemProp='description' itemType='richtext'>{mapJsonRichText(content.description.json)}</p>
+              <p data-aue-prop='description' data-aue-type='richtext' data-aue-label='Description'>{mapJsonRichText(content.description.json)}</p>
             )}     
           </div>
         </div>
