@@ -16,7 +16,7 @@ const Teaser = ({ content }) => {
 
   return (
     <React.Fragment>
-      <section className={'teaser ' + content.style} {...editorProps} itemScope>
+      <section className={'teaser ' + content.style} {...editorProps}>
         <div className='container'>
        
           {content.asset.__typename === 'ImageRef' &&

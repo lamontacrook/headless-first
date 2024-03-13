@@ -21,7 +21,7 @@ const Home = ({ context }) => {
     });
 
 
-    sdk.runPersistedQuery('pure-headless/Teaser', { path: `/content/dam/${context.project}/hero` })
+    sdk.runPersistedQuery('pure-headless/teaser', { path: `/content/dam/${context.project}/hero` })
       .then(({ data }) => {
         if (data) {
           setContent(data);
@@ -43,11 +43,13 @@ const Home = ({ context }) => {
 
 
   }, [context.url, context.endpoint, context.project]);
-
   return (
     <div className='main-body'>
       <div>{content.component && <Teaser content={content.component.item} />}</div>
-      <div>{list.cards && <ImageList content={list.cards} />}</div>
+      <div>{list.imagelist && list.imagelist.items.map((item) => (
+        <ImageList key={item} content={item} />
+      ))}
+      </div>
     </div>
   );
 };

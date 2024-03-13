@@ -7,7 +7,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 const App = () => {
   const context = {
     endpoint: '/graphql/execute.json',
-    url: '<AEM URL>',
+    url: 'https://author-p121458-e1187969.adobeaemcloud.com',
     project: 'pure-headless',
   };
 
